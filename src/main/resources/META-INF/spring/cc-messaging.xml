@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-destroy-method="destroy"
+       default-init-method="afterPropertiesSet"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:property-placeholder location="classpath*:cluster-console.properties"/>
+
+    <bean id="responseSender" class="com.liferay.portal.kernel.messaging.sender.DefaultMessageSender">
+        <property name="messageBus">
+            <bean class="com.liferay.portal.kernel.messaging.MessageBusUtil" factory-method="getMessageBus"/>
+        </property>
+    </bean>
+
+    <bean id="statusSender" class="com.liferay.portal.kernel.messaging.sender.DefaultSingleDestinationMessageSender">
+        <property name="destinationName" value="${destination.status}"/>
+        <property name="messageSender" ref="responseSender"/>
+    </bean>
+
+    <bean id="destination.poll" class="com.liferay.portal.kernel.messaging.ParallelDestination">
+        <property name="name" value="${destination.poll}"/>
+    </bean>
+
+    <bean id="destination.status" class="com.liferay.portal.kernel.messaging.ParallelDestination">
+        <property name="name" value="${destination.status}"/>
+    </bean>
+
+    <bean id="messageListener.clusterBridge" class="com.liferay.portal.kernel.cluster.messaging.ClusterBridgeMessageListener">
+        <property name="priority" value="${cluster.bridge.priority}"/>
+    </bean>
+
+    <bean id="messageListener.parent" abstract="true" class="au.com.permeance.clusterconsole.monitor.MonitorMessageListener">
+        <constructor-arg index="0" name="clusterNode" ref="common.localClusterNode"/>
+        <constructor-arg index="1" name="jsonFactory" ref="common.jsonFactory"/>
+        <property name="responseSender" ref="responseSender"/>
+        <property name="statusSender" ref="statusSender"/>
+    </bean>
+
+    <bean id="messageListener.classLoading" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.classLoading"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.classLoading" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ClassLoadingMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.classLoading}"/>
+    </bean>
+
+    <bean id="messageListener.clusterNode" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.clusterNode"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.clusterNode" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ClusterNodeMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.clusterNode}"/>
+    </bean>
+
+    <bean id="messageListener.file" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.file"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.file" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.FileMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.file}"/>
+    </bean>
+
+    <bean id="messageListener.memory" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.memory"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.memory" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.MemoryMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.memory}"/>
+    </bean>
+
+    <bean id="messageListener.operatingSystem" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.operatingSystem"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.operatingSystem" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.OperatingSystemMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.operatingSystem}"/>
+    </bean>
+
+    <bean id="messageListener.runtime" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.runtime"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.runtime" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.RuntimeMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.runtime}"/>
+    </bean>
+
+    <bean id="messageListener.thread" parent="messageListener.parent">
+        <constructor-arg index="2" name="monitor" ref="monitor.thread"/>
+    </bean>
+
+    <bean id="messageListener.monitorHistory.thread" class="au.com.permeance.clusterconsole.monitor.MonitorHistoryMessageListener">
+        <constructor-arg index="0" name="monitorName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ThreadMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="size" value="${poll.history.thread}"/>
+    </bean>
+
+    <bean class="com.liferay.portal.kernel.messaging.config.PluginMessagingConfigurator">
+        <property name="destinations">
+            <list>
+                <ref bean="destination.poll"/>
+                <ref bean="destination.status"/>
+            </list>
+        </property>
+        <property name="messageListeners">
+            <map key-type="java.lang.String" value-type="java.util.List">
+                <entry key="${destination.poll}">
+                    <list value-type="com.liferay.portal.kernel.messaging.MessageListener">
+                        <ref bean="messageListener.clusterBridge"/>
+                        <ref bean="messageListener.classLoading"/>
+                        <ref bean="messageListener.clusterNode"/>
+                        <ref bean="messageListener.file"/>
+                        <ref bean="messageListener.memory"/>
+                        <ref bean="messageListener.operatingSystem"/>
+                        <ref bean="messageListener.runtime"/>
+                        <ref bean="messageListener.thread"/>
+                    </list>
+                </entry>
+                <entry key="${destination.status}">
+                    <list value-type="com.liferay.portal.kernel.pop.MessageListener">
+                        <ref bean="messageListener.clusterBridge"/>
+                        <ref bean="messageListener.monitorHistory.classLoading"/>
+                        <ref bean="messageListener.monitorHistory.clusterNode"/>
+                        <ref bean="messageListener.monitorHistory.file"/>
+                        <ref bean="messageListener.monitorHistory.memory"/>
+                        <ref bean="messageListener.monitorHistory.operatingSystem"/>
+                        <ref bean="messageListener.monitorHistory.runtime"/>
+                        <ref bean="messageListener.monitorHistory.thread"/>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>

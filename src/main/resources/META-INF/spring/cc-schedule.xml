@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-destroy-method="destroy"
+       default-init-method="afterPropertiesSet"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+       xmlns:util="http://www.springframework.org/schema/util">
+
+    <bean id="trigger.parent" abstract="true" class="com.liferay.portal.kernel.scheduler.IntervalTrigger">
+        <constructor-arg index="1" name="groupName" value="${poll.trigger.groupName}"/>
+    </bean>
+
+    <bean id="trigger.classLoading" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ClassLoadingMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.classLoading}"/>
+    </bean>
+
+    <bean id="trigger.clusterNode" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ClusterNodeMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.clusterNode}"/>
+    </bean>
+
+    <bean id="trigger.file" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.FileMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.file}"/>
+    </bean>
+
+    <bean id="trigger.memory" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.MemoryMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.memory}"/>
+    </bean>
+
+    <bean id="trigger.operatingSystem" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.OperatingSystemMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.operatingSystem}"/>
+    </bean>
+
+    <bean id="trigger.runtime" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.RuntimeMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.runtime}"/>
+    </bean>
+
+    <bean id="trigger.thread" parent="trigger.parent">
+        <constructor-arg index="0" name="jobName">
+            <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ThreadMonitor.NAME"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="interval" value="${poll.frequency.thread}"/>
+    </bean>
+
+    <bean class="au.com.permeance.clusterconsole.scheduler.ClusterConsoleScheduleConfigurator">
+        <constructor-arg index="0" name="destinationName" value="${destination.poll}"/>
+        <constructor-arg index="1" name="triggers">
+            <list value-type="com.liferay.portal.kernel.scheduler.Trigger">
+                <ref bean="trigger.classLoading"/>
+                <ref bean="trigger.clusterNode"/>
+                <ref bean="trigger.file"/>
+                <ref bean="trigger.memory"/>
+                <ref bean="trigger.operatingSystem"/>
+                <ref bean="trigger.runtime"/>
+                <ref bean="trigger.thread"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

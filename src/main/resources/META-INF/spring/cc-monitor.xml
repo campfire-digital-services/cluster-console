@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="monitor.classLoading" class="au.com.permeance.clusterconsole.monitor.impl.ClassLoadingMonitor">
+        <constructor-arg index="0" name="classLoadingMXBean">
+            <bean class="java.lang.management.ManagementFactory" factory-method="getClassLoadingMXBean"/>
+        </constructor-arg>
+        <constructor-arg index="1" name="jsonFactory" ref="common.jsonFactory"/>
+    </bean>
+
+    <bean id="monitor.clusterNode" class="au.com.permeance.clusterconsole.monitor.impl.ClusterNodeMonitor">
+        <constructor-arg index="0" name="clusterNode" ref="common.localClusterNode"/>
+        <constructor-arg index="1" name="jsonFactory" ref="common.jsonFactory"/>
+    </bean>
+
+    <bean id="monitor.file" class="au.com.permeance.clusterconsole.monitor.impl.FileMonitor">
+        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+        <constructor-arg index="1" name="portal">
+            <bean class="com.liferay.portal.util.PortalUtil" factory-method="getPortal"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="monitor.memory" class="au.com.permeance.clusterconsole.monitor.impl.MemoryMonitor">
+        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+        <constructor-arg index="1" name="memoryMXBean">
+            <bean class="java.lang.management.ManagementFactory" factory-method="getMemoryMXBean"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="monitor.operatingSystem" class="au.com.permeance.clusterconsole.monitor.impl.OperatingSystemMonitor">
+        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+        <constructor-arg index="1" name="operatingSystemMXBean">
+            <bean class="java.lang.management.ManagementFactory" factory-method="getOperatingSystemMXBean"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="monitor.runtime" class="au.com.permeance.clusterconsole.monitor.impl.RuntimeMonitor">
+        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+        <constructor-arg index="1" name="runtime">
+            <bean class="java.lang.Runtime" factory-method="getRuntime"/>
+        </constructor-arg>
+        <constructor-arg index="2" name="runtimeMXBean">
+            <bean class="java.lang.management.ManagementFactory" factory-method="getRuntimeMXBean"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="monitor.thread" class="au.com.permeance.clusterconsole.monitor.impl.ThreadMonitor">
+        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+        <constructor-arg index="1" name="threadMXBean">
+            <bean class="java.lang.management.ManagementFactory" factory-method="getThreadMXBean"/>
+        </constructor-arg>
+    </bean>
+
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 6.1.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_6_1_0.dtd">
+<liferay-portlet-app>
+    <portlet>
+        <portlet-name>Memory Monitor</portlet-name>
+        <!--<control-panel-entry-category></control-panel-entry-category>-->
+        <!--<control-panel-entry-class></control-panel-entry-class>-->
+        <!--<control-panel-entry-weight></control-panel-entry-weight>-->
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+    <role-mapper>
+        <role-name>administrator</role-name>
+        <role-link>Administrator</role-link>
+    </role-mapper>
+</liferay-portlet-app>
