@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans default-destroy-method="destroy"
-       default-init-method="afterPropertiesSet"
-       xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
        xmlns:util="http://www.springframework.org/schema/util">
@@ -59,7 +57,7 @@
         <constructor-arg index="2" name="interval" value="${poll.frequency.thread}"/>
     </bean>
 
-    <bean class="au.com.permeance.clusterconsole.scheduler.ClusterConsoleScheduleConfigurator">
+    <bean class="au.com.permeance.clusterconsole.scheduler.ClusterConsoleScheduleConfigurator" destroy-method="destroy" init-method="afterPropertiesSet">
         <constructor-arg index="0" name="destinationName" value="${destination.poll}"/>
         <constructor-arg index="1" name="triggers">
             <list value-type="com.liferay.portal.kernel.scheduler.Trigger">

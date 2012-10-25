@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans default-destroy-method="destroy"
-       default-init-method="afterPropertiesSet"
-       xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -13,7 +11,7 @@
 
     <bean id="responseSender" class="com.liferay.portal.kernel.messaging.sender.DefaultMessageSender">
         <property name="messageBus">
-            <bean class="com.liferay.portal.kernel.messaging.MessageBusUtil" factory-method="getMessageBus"/>
+            <bean class="com.liferay.portal.kernel.messaging.MessageBusUtil" factory-method="getMessageBus" destroy-method="getDestinationCount" />
         </property>
     </bean>
 
@@ -22,11 +20,11 @@
         <property name="messageSender" ref="responseSender"/>
     </bean>
 
-    <bean id="destination.poll" class="com.liferay.portal.kernel.messaging.ParallelDestination">
+    <bean id="destination.poll" class="com.liferay.portal.kernel.messaging.ParallelDestination" init-method="afterPropertiesSet">
         <property name="name" value="${destination.poll}"/>
     </bean>
 
-    <bean id="destination.status" class="com.liferay.portal.kernel.messaging.ParallelDestination">
+    <bean id="destination.status" class="com.liferay.portal.kernel.messaging.ParallelDestination" init-method="afterPropertiesSet">
         <property name="name" value="${destination.status}"/>
     </bean>
 
@@ -118,7 +116,7 @@
         <constructor-arg index="1" name="size" value="${poll.history.thread}"/>
     </bean>
 
-    <bean class="com.liferay.portal.kernel.messaging.config.PluginMessagingConfigurator">
+    <bean class="com.liferay.portal.kernel.messaging.config.PluginMessagingConfigurator" destroy-method="destroy" init-method="afterPropertiesSet">
         <property name="destinations">
             <list>
                 <ref bean="destination.poll"/>
