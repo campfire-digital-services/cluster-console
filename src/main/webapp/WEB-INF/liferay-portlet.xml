@@ -3,9 +3,9 @@
 <liferay-portlet-app>
     <portlet>
         <portlet-name>Memory Monitor</portlet-name>
-        <!--<control-panel-entry-category></control-panel-entry-category>-->
-        <!--<control-panel-entry-class></control-panel-entry-class>-->
-        <!--<control-panel-entry-weight></control-panel-entry-weight>-->
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <system>true</system>
     </portlet>
