@@ -12,6 +12,4 @@
         <property name="suffix" value=".jspx"/>
     </bean>
 
-    <alias name="common.viewResolver" alias="viewResolver"/>
-
 </beans>
