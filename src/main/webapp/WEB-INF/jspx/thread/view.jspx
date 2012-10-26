@@ -28,38 +28,36 @@
             </thead>
             <tbody>
             <c:forEach var="historyEntry" items="${historyEntries.value}">
-                <spring:eval var="threads" expression="historyEntry.value.getJSONObject('threads')" />
-                <spring:eval var="threadIds" expression="threads.names()" />
-                <spring:eval var="threadCount" expression="threadIds.length()" />
+                <spring:eval var="threadCount" expression="historyEntry?.value?.getJSONObject('threads')?.length()" />
                 <tr>
                     <td rowspan="${threadCount}">${historyEntry.key}</td>
                     <td rowspan="${threadCount}">
-                        <spring:eval expression="historyEntry.value.getInt('threadCount')" />
+                        <spring:eval expression="historyEntry?.value?.getInt('threadCount')" />
                     </td>
                     <td rowspan="${threadCount}">
-                        <spring:eval expression="historyEntry.value.getInt('daemonThreadCount')" />
+                        <spring:eval expression="historyEntry?.value?.getInt('daemonThreadCount')" />
                     </td>
                     <td rowspan="${threadCount}">
-                        <spring:eval expression="historyEntry.value.getInt('totalStartedThreadCount')" />
+                        <spring:eval expression="historyEntry?.value?.getInt('totalStartedThreadCount')" />
                     </td>
                 </tr>
                 <c:forEach var="threadIdx" begin="1" end="${threadCount}">
-                    <spring:eval var="threadId" expression="threadIds.getString(threadIdx)" />
+                    <spring:eval var="threadId" expression="historyEntry?.value?.getJSONObject('threads')?.getString(threadIdx)" />
                     <tr>
                         <td>
                             ${threadId}
                         </td>
                         <td>
-                            <spring:eval expression="threads.getJSONObject(threadId)?.getString('threadName')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('threads')?.getJSONObject(threadId)?.getString('threadName')" />
                         </td>
                         <td>
-                            <spring:eval expression="threads.getJSONObject(threadId)?.getLong('cpuTime')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('threads')?.getJSONObject(threadId)?.getLong('cpuTime')" />
                         </td>
                         <td>
-                            <spring:eval expression="threads.getJSONObject(threadId)?.getLong('userTime')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('threads')?.getJSONObject(threadId)?.getLong('userTime')" />
                         </td>
                         <td>
-                            <spring:eval expression="threads.getJSONObject(threadId)?.getString('threadState')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('threads')?.getJSONObject(threadId)?.getString('threadState')" />
                         </td>
                     </tr>
                 </c:forEach>

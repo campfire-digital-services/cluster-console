@@ -25,19 +25,19 @@
                     <tr>
                         <td>${historyEntry.key}</td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getString('arch')" />
+                            <spring:eval expression="historyEntry?.value?.getString('arch')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getString('name')" />
+                            <spring:eval expression="historyEntry?.value?.getString('name')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getString('version')" />
+                            <spring:eval expression="historyEntry?.value?.getString('version')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getInt('availableProcessors')" />
+                            <spring:eval expression="historyEntry?.value?.getInt('availableProcessors')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getDouble('systemLoadAverage')" />
+                            <spring:eval expression="historyEntry?.value?.getDouble('systemLoadAverage')" />
                         </td>
                     </tr>
                 </c:forEach>

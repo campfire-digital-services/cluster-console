@@ -24,16 +24,16 @@
                     <tr>
                         <td>${historyEntry.key}</td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getString('clusterNodeId')" />
+                            <spring:eval expression="historyEntry?.value?.getString('clusterNodeId')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getString('hostName')" />
+                            <spring:eval expression="historyEntry?.value?.getString('hostName')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getString('address')" />
+                            <spring:eval expression="historyEntry?.value?.getString('address')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getInt('port')" />
+                            <spring:eval expression="historyEntry?.value?.getInt('port')" />
                         </td>
                     </tr>
                 </c:forEach>

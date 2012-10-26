@@ -26,22 +26,22 @@
                     <tr>
                         <td>${historyEntry.key}</td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getInt('availableProcessors')" />
+                            <spring:eval expression="historyEntry?.value?.getInt('availableProcessors')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getLong('freeMemory')" />
+                            <spring:eval expression="historyEntry?.value?.getLong('freeMemory')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getLong('totalMemory')" />
+                            <spring:eval expression="historyEntry?.value?.getLong('totalMemory')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getLong('maxMemory')" />
+                            <spring:eval expression="historyEntry?.value?.getLong('maxMemory')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getLong('startTime')" />
+                            <spring:eval expression="historyEntry?.value?.getLong('startTime')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getLong('uptime')" />
+                            <spring:eval expression="historyEntry?.value?.getLong('uptime')" />
                         </td>
                     </tr>
                 </c:forEach>

@@ -23,13 +23,13 @@
                     <tr>
                         <td>${historyEntry.key}</td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getInt('loadedClassCount')" />
+                            <spring:eval expression="historyEntry?.value?.getInt('loadedClassCount')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getInt('unloadedClassCount')" />
+                            <spring:eval expression="historyEntry?.value?.getInt('unloadedClassCount')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getInt('totalLoadedClassCount')" />
+                            <spring:eval expression="historyEntry?.value?.getInt('totalLoadedClassCount')" />
                         </td>
                     </tr>
                 </c:forEach>

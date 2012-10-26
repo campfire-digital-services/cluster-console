@@ -32,28 +32,28 @@
                     <tr>
                         <td>${historyEntry.key}</td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('heap').getLong('init')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('init')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('heap').getLong('used')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('used')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('heap').getLong('committed')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('committed')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('heap').getLong('max')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('max')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('nonHeap').getLong('init')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('init')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('nonHeap').getLong('used')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('used')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('nonHeap').getLong('committed')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('committed')" />
                         </td>
                         <td>
-                            <spring:eval expression="historyEntry.value.getJSONObject('nonHeap').getLong('max')" />
+                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('max')" />
                         </td>
                     </tr>
                 </c:forEach>
