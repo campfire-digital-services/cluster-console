@@ -4,6 +4,7 @@
 
     <portlet>
         <portlet-name>Class Loading Monitor</portlet-name>
+        <icon>/img/classLoading.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
@@ -13,6 +14,7 @@
 
     <portlet>
         <portlet-name>Cluster Node Monitor</portlet-name>
+        <icon>/img/clusterNode.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
@@ -22,6 +24,7 @@
 
     <portlet>
         <portlet-name>File System Monitor</portlet-name>
+        <icon>/img/file.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
@@ -31,6 +34,7 @@
 
     <portlet>
         <portlet-name>Memory Monitor</portlet-name>
+        <icon>/img/memory.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
@@ -40,6 +44,7 @@
 
     <portlet>
         <portlet-name>Operating System Monitor</portlet-name>
+        <icon>/img/operatingSystem.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
@@ -49,6 +54,7 @@
 
     <portlet>
         <portlet-name>Runtime Monitor</portlet-name>
+        <icon>/img/runtime.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
@@ -58,6 +64,7 @@
 
     <portlet>
         <portlet-name>Thread Monitor</portlet-name>
+        <icon>/img/thread.png</icon>
         <control-panel-entry-category>server</control-panel-entry-category>
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
