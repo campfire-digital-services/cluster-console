@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 6.1.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_6_1_0.dtd">
 <liferay-portlet-app>
+
+    <portlet>
+        <portlet-name>Class Loading Monitor</portlet-name>
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+
+    <portlet>
+        <portlet-name>Cluster Node Monitor</portlet-name>
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+
+    <portlet>
+        <portlet-name>File System Monitor</portlet-name>
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+
     <portlet>
         <portlet-name>Memory Monitor</portlet-name>
         <control-panel-entry-category>server</control-panel-entry-category>
@@ -9,8 +37,37 @@
         <instanceable>false</instanceable>
         <system>true</system>
     </portlet>
+
+    <portlet>
+        <portlet-name>Operating System Monitor</portlet-name>
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+
+    <portlet>
+        <portlet-name>Runtime Monitor</portlet-name>
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+
+    <portlet>
+        <portlet-name>Thread Monitor</portlet-name>
+        <control-panel-entry-category>server</control-panel-entry-category>
+        <control-panel-entry-weight>5.0</control-panel-entry-weight>
+        <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
+        <instanceable>false</instanceable>
+        <system>true</system>
+    </portlet>
+
     <role-mapper>
         <role-name>administrator</role-name>
         <role-link>Administrator</role-link>
     </role-mapper>
+
 </liferay-portlet-app>

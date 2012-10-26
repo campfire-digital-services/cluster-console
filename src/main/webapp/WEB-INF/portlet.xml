@@ -2,6 +2,76 @@
 <portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0"
              xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
+
+    <portlet>
+        <description>This portlet provides runtime monitoring of JVM classloading</description>
+        <portlet-name>Class Loading Monitor</portlet-name>
+        <display-name>Class Loading Monitor</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/spring/classLoading-monitor-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Class Loading Monitor</title>
+            <short-title>Class Loading Monitor</short-title>
+        </portlet-info>
+        <security-role-ref>
+            <role-name>administrator</role-name>
+        </security-role-ref>
+    </portlet>
+
+    <portlet>
+        <description>This portlet provides runtime monitoring of liferay cluster node members</description>
+        <portlet-name>Cluster Node Monitor</portlet-name>
+        <display-name>Cluster Node Monitor</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/spring/clusterNode-monitor-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Cluster Node Monitor</title>
+            <short-title>Cluster Node Monitor</short-title>
+        </portlet-info>
+        <security-role-ref>
+            <role-name>administrator</role-name>
+        </security-role-ref>
+    </portlet>
+
+    <portlet>
+        <description>This portlet provides runtime monitoring of file system information</description>
+        <portlet-name>File System Monitor</portlet-name>
+        <display-name>File System Monitor</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/spring/file-monitor-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>File System Monitor</title>
+            <short-title>File System Monitor</short-title>
+        </portlet-info>
+        <security-role-ref>
+            <role-name>administrator</role-name>
+        </security-role-ref>
+    </portlet>
+
     <portlet>
         <description>This portlet provides runtime monitoring of JVM memory allocation and usage</description>
         <portlet-name>Memory Monitor</portlet-name>
@@ -9,7 +79,7 @@
         <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
         <init-param>
             <name>contextConfigLocation</name>
-            <value>/WEB-INF/spring/memory-monitor.xml</value>
+            <value>/WEB-INF/spring/memory-monitor-portlet.xml</value>
         </init-param>
         <expiration-cache>0</expiration-cache>
         <supports>
@@ -24,4 +94,74 @@
             <role-name>administrator</role-name>
         </security-role-ref>
     </portlet>
+
+    <portlet>
+        <description>This portlet provides runtime monitoring of operating system information</description>
+        <portlet-name>Operating System Monitor</portlet-name>
+        <display-name>Operating System Monitor</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/spring/operatingSystem-monitor-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Operating System Monitor</title>
+            <short-title>Operating System Monitor</short-title>
+        </portlet-info>
+        <security-role-ref>
+            <role-name>administrator</role-name>
+        </security-role-ref>
+    </portlet>
+
+    <portlet>
+        <description>This portlet provides runtime monitoring of JVM runtime information</description>
+        <portlet-name>Runtime Monitor</portlet-name>
+        <display-name>Runtime Monitor</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/spring/runtime-monitor-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Runtime Monitor</title>
+            <short-title>Runtime Monitor</short-title>
+        </portlet-info>
+        <security-role-ref>
+            <role-name>administrator</role-name>
+        </security-role-ref>
+    </portlet>
+
+    <portlet>
+        <description>This portlet provides runtime monitoring of JVM thread information</description>
+        <portlet-name>Thread Monitor</portlet-name>
+        <display-name>Thread Monitor</display-name>
+        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/spring/thread-monitor-portlet.xml</value>
+        </init-param>
+        <expiration-cache>0</expiration-cache>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Thread Monitor</title>
+            <short-title>Thread Monitor</short-title>
+        </portlet-info>
+        <security-role-ref>
+            <role-name>administrator</role-name>
+        </security-role-ref>
+    </portlet>
+
 </portlet-app>
