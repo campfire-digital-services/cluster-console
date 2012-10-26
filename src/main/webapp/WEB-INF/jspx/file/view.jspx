@@ -8,72 +8,72 @@
     <c:forEach var="historyEntries" items="${monitorHistory}">
         <table>
             <thead>
-            <tr>
-                <th colspan="13">${historyEntries.key}</th>
-            </tr>
-            <tr>
-                <th rowspan="2">Time</th>
-                <th colspan="4">Global Lib Dir</th>
-                <th colspan="4">Portal Lib Dir</th>
-                <th colspan="4">Portal Web Dir</th>
-            </tr>
-            <tr>
-                <th>Path</th>
-                <th>Free Space</th>
-                <th>Usable Space</th>
-                <th>Total Space</th>
-                <th>Path</th>
-                <th>Free Space</th>
-                <th>Usable Space</th>
-                <th>Total Space</th>
-                <th>Path</th>
-                <th>Free Space</th>
-                <th>Usable Space</th>
-                <th>Total Space</th>
-            </tr>
+                <tr>
+                    <th colspan="13">${historyEntries.key}</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">Time</th>
+                    <th colspan="4">Global Lib Dir</th>
+                    <th colspan="4">Portal Lib Dir</th>
+                    <th colspan="4">Portal Web Dir</th>
+                </tr>
+                <tr>
+                    <th>Path</th>
+                    <th>Free Space</th>
+                    <th>Usable Space</th>
+                    <th>Total Space</th>
+                    <th>Path</th>
+                    <th>Free Space</th>
+                    <th>Usable Space</th>
+                    <th>Total Space</th>
+                    <th>Path</th>
+                    <th>Free Space</th>
+                    <th>Usable Space</th>
+                    <th>Total Space</th>
+                </tr>
             </thead>
             <tbody>
-            <c:forEach var="historyEntry" items="${historyEntries.value}">
-                <tr>
-                    <td>${historyEntry.key}</td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getString('path')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getLong('freeSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getLong('usableSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getLong('totalSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getString('path')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getLong('freeSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getLong('usableSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getLong('totalSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getString('path')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getLong('freeSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getLong('usableSpace')" />
-                    </td>
-                    <td>
-                        <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getLong('totalSpace')" />
-                    </td>
-                </tr>
-            </c:forEach>
+                <c:forEach var="historyEntry" items="${historyEntries.value}">
+                    <tr>
+                        <td>${historyEntry.key}</td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getString('path')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getLong('freeSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getLong('usableSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('globalLibDir').getLong('totalSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getString('path')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getLong('freeSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getLong('usableSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalLibDir').getLong('totalSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getString('path')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getLong('freeSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getLong('usableSpace')" />
+                        </td>
+                        <td>
+                            <spring:eval expression="historyEntry.value.getJSONObject('portalWebDir').getLong('totalSpace')" />
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </c:forEach>
