@@ -8,8 +8,9 @@
     <mvc:annotation-driven/>
 
     <bean id="controller.operatingSystem" class="au.com.permeance.clusterconsole.controller.MonitorController">
-        <constructor-arg index="0" name="monitorHistory" ref="messageListener.monitorHistory.operatingSystem"/>
-        <constructor-arg index="1" name="viewPrefix" value="operatingSystem"/>
+        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+        <constructor-arg index="1" name="monitorHistory" ref="messageListener.monitorHistory.operatingSystem"/>
+        <constructor-arg index="2" name="viewPrefix" value="operatingSystem"/>
     </bean>
 
 </beans>
