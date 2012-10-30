@@ -5,7 +5,9 @@ import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 import com.liferay.portal.kernel.messaging.MessageStatus;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Queue;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -13,6 +15,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static java.util.Collections.unmodifiableList;
 
 public class MonitorHistoryMessageListener extends BaseMessageListener implements MonitorHistory {
 
@@ -52,8 +56,13 @@ public class MonitorHistoryMessageListener extends BaseMessageListener implement
     }
 
     @Override
-    public SortedMap<String, SortedMap<Date, JSONObject>> getHistory() {
-        LOGGER.debug("getHistory() - start");
+    public List<JSONObject> getHistory() {
+        return unmodifiableList(new ArrayList<JSONObject>(history));
+    }
+
+    @Override
+    public SortedMap<String, SortedMap<Date, JSONObject>> getCategorisedHistory() {
+        LOGGER.debug("getCategorisedHistory() - start");
         final SortedMap<String, SortedMap<Date, JSONObject>> historyMap = new TreeMap<String, SortedMap<Date, JSONObject>>();
         for (final JSONObject historyJSONObject : history) {
 
@@ -89,7 +98,7 @@ public class MonitorHistoryMessageListener extends BaseMessageListener implement
             dateMap.put(new Date(timestamp), resultJSONObject);
 
         }
-        LOGGER.debug("getHistory() - end - returning: {}", historyMap);
+        LOGGER.debug("getCategorisedHistory() - end - returning: {}", historyMap);
         return historyMap;
     }
 
