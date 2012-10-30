@@ -39,6 +39,8 @@
         <control-panel-entry-weight>5.0</control-panel-entry-weight>
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
+        <header-portlet-css>/css/memory.css</header-portlet-css>
+        <footer-portlet-javascript>/js/memory.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
 

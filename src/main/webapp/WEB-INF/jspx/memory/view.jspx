@@ -2,63 +2,16 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:c="http://java.sun.com/jsp/jstl/core"
           xmlns:jsp="http://java.sun.com/JSP/Page"
-          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:portlet="http://java.sun.com/portlet"
           version="2.0">
 
+    <portlet:resourceURL var="jsonUrl" />
+
     <c:forEach var="historyEntries" items="${monitorHistory}">
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="9">${historyEntries.key}</th>
-                </tr>
-                <tr>
-                    <th rowspan="2">Time</th>
-                    <th colspan="4">Heap</th>
-                    <th colspan="4">Non-heap</th>
-                </tr>
-                <tr>
-                    <th>Initial</th>
-                    <th>Used</th>
-                    <th>Committed</th>
-                    <th>Max</th>
-                    <th>Initial</th>
-                    <th>Used</th>
-                    <th>Committed</th>
-                    <th>Max</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="historyEntry" items="${historyEntries.value}">
-                    <tr>
-                        <td>${historyEntry.key}</td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('init')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('used')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('committed')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('heap')?.getLong('max')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('init')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('used')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('committed')" />
-                        </td>
-                        <td>
-                            <spring:eval expression="historyEntry?.value?.getJSONObject('nonHeap')?.getLong('max')" />
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <h3>${historyEntries.key}</h3>
+        <div class="memory-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${jsonUrl}">
+            <!-- Chart goes here -->
+        </div>
     </c:forEach>
 
 </jsp:root>
