@@ -1,11 +1,11 @@
 "use strict";
-YUI.add("cluster-console",
-        function (Y) {
-            Y.log("Initialising ClusterConsole namespace", "debug");
-            Y.ClusterConsole = {
+AUI.add("cluster-console",
+        function (A) {
+            A.log("Initialising ClusterConsole namespace", "debug");
+            A.ClusterConsole = {
                 chart : function (selector, series) {
-                    Y.log("Creating chart for: " + selector + " with series: " + series, "info");
-                    Y.all(selector).each(function (node) {
+                    A.log("Creating chart for: " + selector + " with series: " + series, "info");
+                    A.all(selector).each(function (node) {
                         var success = function (e) {
                             var axes = {
                                 "Timestamp" : {
@@ -24,12 +24,12 @@ YUI.add("cluster-console",
                             var styles = {
                                 series : {}
                             };
-                            Y.Array(series).forEach(function (val) {
-                                Y.log("Configuring marker style for series: " + val, "debug");
+                            A.Array(series).forEach(function (val) {
+                                A.log("Configuring marker style for series: " + val, "debug");
                                 styles.series[val] = marker;
                             });
-                            Y.log("Graphing data from: " + e, "debug");
-                            new Y.Chart({
+                            A.log("Graphing data from: " + e, "debug");
+                            new A.Chart({
                                             axes                : axes,
                                             categoryKey         : "Timestamp",
                                             categoryType        : "time",
@@ -41,7 +41,7 @@ YUI.add("cluster-console",
                                         });
                         };
                         var failure = function (e) {
-                            Y.log("Error fetching chart data: " + e, "error");
+                            A.log("Error fetching chart data: " + e, "error");
                             alert("Oops... something went wrong while rendering the chart: " + e);
                         };
                         var config = {
@@ -65,8 +65,8 @@ YUI.add("cluster-console",
                                 resultListLocator : node.attr("data-cluster-node-id")
                             }
                         };
-                        Y.log("Creating JSON request for data", "info");
-                        new Y.DataSource.IO(config).plug(Y.Plugin.DataSourceJSONSchema, schema).sendRequest(request);
+                        A.log("Creating JSON request for data", "info");
+                        new A.DataSource.IO(config).plug(A.Plugin.DataSourceJSONSchema, schema).sendRequest(request);
                     });
                 }
             };
