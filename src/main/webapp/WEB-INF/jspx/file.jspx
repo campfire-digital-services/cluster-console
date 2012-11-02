@@ -3,11 +3,16 @@
           xmlns:c="http://java.sun.com/jsp/jstl/core"
           xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns:portlet="http://java.sun.com/portlet"
+          xmlns:spring="http://www.springframework.org/tags"
           version="2.0">
 
     <c:forEach var="historyEntries" items="${history}">
 
-        <h3>${historyEntries.key} - Global Lib Dir</h3>
+        <h3>
+            ${historyEntries.key}
+            -
+            <spring:eval expression="historyEntries.value[0]?.getJSONObject('monitor')?.getJSONObject('result')?.getJSONObject('globalLibDir')?.getString('path')" />
+        </h3>
 
         <portlet:resourceURL var="globalLibDirJsonUrl">
             <portlet:param name="reducer" value="globalLibDir" />
@@ -17,9 +22,11 @@
             <!-- Chart goes here -->
         </div>
 
-        <!-- TODO Display: path -->
-
-        <h3>${historyEntries.key} - Portal Lib Dir</h3>
+        <h3>
+            ${historyEntries.key}
+            -
+            <spring:eval expression="historyEntries.value[0]?.getJSONObject('monitor')?.getJSONObject('result')?.getJSONObject('portalLibDir')?.getString('path')" />
+        </h3>
 
         <portlet:resourceURL var="portalLibDirJsonUrl">
             <portlet:param name="reducer" value="portalLibDir" />
@@ -29,9 +36,11 @@
             <!-- Chart goes here -->
         </div>
 
-        <!-- TODO Display: path -->
-
-        <h3>${historyEntries.key} - Portal Web Dir</h3>
+        <h3>
+            ${historyEntries.key}
+            -
+            <spring:eval expression="historyEntries.value[0]?.getJSONObject('monitor')?.getJSONObject('result')?.getJSONObject('portalWebDir')?.getString('path')" />
+        </h3>
 
         <portlet:resourceURL var="portalWebDirJsonUrl">
             <portlet:param name="reducer" value="portalWebDir" />
@@ -40,8 +49,6 @@
         <div class="file-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${portalWebDirJsonUrl}">
             <!-- Chart goes here -->
         </div>
-
-        <!-- TODO Display: path -->
 
     </c:forEach>
 
