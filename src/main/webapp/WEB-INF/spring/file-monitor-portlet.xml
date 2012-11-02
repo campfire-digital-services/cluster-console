@@ -10,7 +10,29 @@
     <bean id="controller.file" class="au.com.permeance.clusterconsole.controller.MonitorController">
         <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
         <constructor-arg index="1" name="monitorHistory" ref="messageListener.monitorHistory.file"/>
-        <constructor-arg index="2" name="viewPrefix" value="file"/>
+        <constructor-arg index="2" name="view" value="file"/>
+        <constructor-arg index="3" name="reducers">
+            <map key-type="java.lang.String" value-type="au.com.permeance.clusterconsole.reducer.JSONReducer">
+                <entry key="globalLibDir">
+                    <bean class="au.com.permeance.clusterconsole.reducer.impl.FileJSONReducer">
+                        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+                        <constructor-arg index="1" name="type" value="globalLibDir"/>
+                    </bean>
+                </entry>
+                <entry key="portalLibDir">
+                    <bean class="au.com.permeance.clusterconsole.reducer.impl.FileJSONReducer">
+                        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+                        <constructor-arg index="1" name="type" value="portalLibDir"/>
+                    </bean>
+                </entry>
+                <entry key="portalWebDir">
+                    <bean class="au.com.permeance.clusterconsole.reducer.impl.FileJSONReducer">
+                        <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
+                        <constructor-arg index="1" name="type" value="portalWebDir"/>
+                    </bean>
+                </entry>
+            </map>
+        </constructor-arg>
     </bean>
 
 </beans>

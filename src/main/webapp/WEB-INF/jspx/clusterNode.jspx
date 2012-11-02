@@ -5,13 +5,17 @@
           xmlns:portlet="http://java.sun.com/portlet"
           version="2.0">
 
-    <portlet:resourceURL var="jsonUrl" />
+    <c:forEach var="historyEntries" items="${history}">
 
-    <c:forEach var="historyEntries" items="${monitorHistory}">
         <h3>${historyEntries.key}</h3>
-        <div class="memory-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${jsonUrl}">
-            <!-- Chart goes here -->
+
+        <portlet:resourceURL var="jsonUrl" />
+
+        <div class="clusterNode-table" data-cluster-node-id="${historyEntries.key}" data-json-url="${jsonUrl}">
+            <!-- TODO Write the table handling JS -->
+            <!-- Table goes here -->
         </div>
+
     </c:forEach>
 
 </jsp:root>

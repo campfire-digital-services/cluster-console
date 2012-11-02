@@ -10,7 +10,7 @@
     <bean id="controller.clusterNode" class="au.com.permeance.clusterconsole.controller.MonitorController">
         <constructor-arg index="0" name="jsonFactory" ref="common.jsonFactory"/>
         <constructor-arg index="1" name="monitorHistory" ref="messageListener.monitorHistory.clusterNode"/>
-        <constructor-arg index="2" name="viewPrefix" value="clusterNode"/>
+        <constructor-arg index="2" name="view" value="clusterNode"/>
     </bean>
 
 </beans>

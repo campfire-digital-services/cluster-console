@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:portlet="http://java.sun.com/portlet"
+          version="2.0">
+
+    <c:forEach var="historyEntries" items="${history}">
+
+        <h3>${historyEntries.key}</h3>
+
+        <portlet:resourceURL var="jsonUrl" />
+
+        <div class="runtime-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${jsonUrl}">
+            <!-- Chart goes here -->
+        </div>
+
+        <!--TODO Display: availableProcessors, startTime, uptime -->
+
+    </c:forEach>
+
+
+
+</jsp:root>

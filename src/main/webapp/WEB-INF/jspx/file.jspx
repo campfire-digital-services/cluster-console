@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:portlet="http://java.sun.com/portlet"
+          version="2.0">
+
+    <c:forEach var="historyEntries" items="${history}">
+
+        <h3>${historyEntries.key} - Global Lib Dir</h3>
+
+        <portlet:resourceURL var="globalLibDirJsonUrl">
+            <portlet:param name="reducer" value="globalLibDir" />
+        </portlet:resourceURL>
+
+        <div class="file-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${globalLibDirJsonUrl}">
+            <!-- Chart goes here -->
+        </div>
+
+        <!-- TODO Display: path -->
+
+        <h3>${historyEntries.key} - Portal Lib Dir</h3>
+
+        <portlet:resourceURL var="portalLibDirJsonUrl">
+            <portlet:param name="reducer" value="portalLibDir" />
+        </portlet:resourceURL>
+
+        <div class="file-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${portalLibDirJsonUrl}">
+            <!-- Chart goes here -->
+        </div>
+
+        <!-- TODO Display: path -->
+
+        <h3>${historyEntries.key} - Portal Web Dir</h3>
+
+        <portlet:resourceURL var="portalWebDirJsonUrl">
+            <portlet:param name="reducer" value="portalWebDir" />
+        </portlet:resourceURL>
+
+        <div class="file-chart" data-cluster-node-id="${historyEntries.key}" data-json-url="${portalWebDirJsonUrl}">
+            <!-- Chart goes here -->
+        </div>
+
+        <!-- TODO Display: path -->
+
+    </c:forEach>
+
+</jsp:root>

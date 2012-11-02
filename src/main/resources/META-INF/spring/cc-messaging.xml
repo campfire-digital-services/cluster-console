@@ -48,6 +48,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ClassLoadingMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.classLoading}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.classLoading}"/>
     </bean>
 
     <bean id="messageListener.clusterNode" parent="messageListener.parent">
@@ -59,6 +60,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ClusterNodeMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.clusterNode}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.clusterNode}"/>
     </bean>
 
     <bean id="messageListener.file" parent="messageListener.parent">
@@ -70,6 +72,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.FileMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.file}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.file}"/>
     </bean>
 
     <bean id="messageListener.memory" parent="messageListener.parent">
@@ -81,6 +84,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.MemoryMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.memory}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.memory}"/>
     </bean>
 
     <bean id="messageListener.operatingSystem" parent="messageListener.parent">
@@ -92,6 +96,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.OperatingSystemMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.operatingSystem}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.operatingSystem}"/>
     </bean>
 
     <bean id="messageListener.runtime" parent="messageListener.parent">
@@ -103,6 +108,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.RuntimeMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.runtime}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.runtime}"/>
     </bean>
 
     <bean id="messageListener.thread" parent="messageListener.parent">
@@ -114,6 +120,7 @@
             <util:constant static-field="au.com.permeance.clusterconsole.monitor.impl.ThreadMonitor.NAME"/>
         </constructor-arg>
         <constructor-arg index="1" name="size" value="${poll.history.thread}"/>
+        <constructor-arg index="2" name="ttl" value="${poll.ttl.thread}"/>
     </bean>
 
     <bean class="com.liferay.portal.kernel.messaging.config.PluginMessagingConfigurator" destroy-method="destroy" init-method="afterPropertiesSet">

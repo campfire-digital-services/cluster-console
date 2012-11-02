@@ -2,7 +2,7 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
 
     "use strict";
 
-    A.all(".memory-chart").each(function (node) {
+    A.all(".runtime-chart").each(function (node) {
 
         var success = function (e) {
 
@@ -31,10 +31,9 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
                             render              : node,
                             styles              : {
                                 series : {
-                                    "Initial Memory"   : marker,
-                                    "Used Memory"      : marker,
-                                    "Committed Memory" : marker,
-                                    "Total Memory"     : marker
+                                    "Free Memory"    : marker,
+                                    "Maximum Memory" : marker,
+                                    "Total Memory"   : marker
                                 }
                             },
                             verticalGridlines   : true
@@ -66,9 +65,8 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
                         key    : "Timestamp",
                         parser : "date"
                     },
-                    "Initial Memory",
-                    "Used Memory",
-                    "Committed Memory",
+                    "Free Memory",
+                    "Maximum Memory",
                     "Total Memory"
                 ],
                 resultListLocator : node.attr("data-cluster-node-id")
@@ -78,6 +76,5 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
         dataSource.sendRequest(request);
 
     });
-
 
 });

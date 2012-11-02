@@ -2,7 +2,7 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
 
     "use strict";
 
-    A.all(".memory-chart").each(function (node) {
+    A.all(".classLoading-chart").each(function (node) {
 
         var success = function (e) {
 
@@ -31,10 +31,9 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
                             render              : node,
                             styles              : {
                                 series : {
-                                    "Initial Memory"   : marker,
-                                    "Used Memory"      : marker,
-                                    "Committed Memory" : marker,
-                                    "Total Memory"     : marker
+                                    "Unloaded Class Count"     : marker,
+                                    "Loaded Class Count"       : marker,
+                                    "Total Loaded Class Count" : marker
                                 }
                             },
                             verticalGridlines   : true
@@ -66,10 +65,9 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
                         key    : "Timestamp",
                         parser : "date"
                     },
-                    "Initial Memory",
-                    "Used Memory",
-                    "Committed Memory",
-                    "Total Memory"
+                    "Unloaded Class Count",
+                    "Loaded Class Count",
+                    "Total Loaded Class Count"
                 ],
                 resultListLocator : node.attr("data-cluster-node-id")
             }

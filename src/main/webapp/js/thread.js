@@ -2,7 +2,7 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
 
     "use strict";
 
-    A.all(".memory-chart").each(function (node) {
+    A.all(".thread-chart").each(function (node) {
 
         var success = function (e) {
 
@@ -31,10 +31,9 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
                             render              : node,
                             styles              : {
                                 series : {
-                                    "Initial Memory"   : marker,
-                                    "Used Memory"      : marker,
-                                    "Committed Memory" : marker,
-                                    "Total Memory"     : marker
+                                    "Daemon Thread Count"        : marker,
+                                    "Thread Count"               : marker,
+                                    "Total Started Thread Count" : marker
                                 }
                             },
                             verticalGridlines   : true
@@ -66,10 +65,9 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
                         key    : "Timestamp",
                         parser : "date"
                     },
-                    "Initial Memory",
-                    "Used Memory",
-                    "Committed Memory",
-                    "Total Memory"
+                    "Daemon Thread Count",
+                    "Thread Count",
+                    "Total Started Thread Count"
                 ],
                 resultListLocator : node.attr("data-cluster-node-id")
             }
@@ -78,6 +76,5 @@ AUI().use("charts", "datasource-io", "datasource-jsonschema", function (A) {
         dataSource.sendRequest(request);
 
     });
-
 
 });
