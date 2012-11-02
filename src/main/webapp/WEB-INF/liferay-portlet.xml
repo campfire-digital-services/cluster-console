@@ -33,6 +33,7 @@
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <header-portlet-css>/css/file.css</header-portlet-css>
+        <footer-portlet-javascript>/js/cluster-console.js</footer-portlet-javascript>
         <footer-portlet-javascript>/js/file.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
@@ -45,6 +46,7 @@
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <header-portlet-css>/css/memory.css</header-portlet-css>
+        <footer-portlet-javascript>/js/cluster-console.js</footer-portlet-javascript>
         <footer-portlet-javascript>/js/memory.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
@@ -57,6 +59,7 @@
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <header-portlet-css>/css/operatingSystem.css</header-portlet-css>
+        <footer-portlet-javascript>/js/cluster-console.js</footer-portlet-javascript>
         <footer-portlet-javascript>/js/operatingSystem.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
@@ -69,6 +72,7 @@
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <header-portlet-css>/css/runtime.css</header-portlet-css>
+        <footer-portlet-javascript>/js/cluster-console.js</footer-portlet-javascript>
         <footer-portlet-javascript>/js/runtime.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
@@ -81,6 +85,7 @@
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <header-portlet-css>/css/thread.css</header-portlet-css>
+        <footer-portlet-javascript>/js/cluster-console.js</footer-portlet-javascript>
         <footer-portlet-javascript>/js/thread.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
