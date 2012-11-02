@@ -10,6 +10,7 @@
         <control-panel-entry-class>com.liferay.portlet.DefaultControlPanelEntry</control-panel-entry-class>
         <instanceable>false</instanceable>
         <header-portlet-css>/css/classLoading.css</header-portlet-css>
+        <footer-portlet-javascript>/js/cluster-console.js</footer-portlet-javascript>
         <footer-portlet-javascript>/js/classLoading.js</footer-portlet-javascript>
         <system>true</system>
     </portlet>
