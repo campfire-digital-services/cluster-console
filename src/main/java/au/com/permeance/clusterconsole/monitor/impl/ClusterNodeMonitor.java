@@ -6,6 +6,8 @@ import com.liferay.portal.kernel.cluster.ClusterNode;
 import com.liferay.portal.kernel.json.JSONFactory;
 import com.liferay.portal.kernel.json.JSONObject;
 
+import java.net.InetAddress;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +16,8 @@ public class ClusterNodeMonitor implements Monitor {
     public static final String NAME = "Cluster Node";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ClusterNodeMonitor.class);
+    
+    private static final String HOSTNAME_UNKNOWN = "UNKNOWN";
 
     private final ClusterNode clusterNode;
 
@@ -39,7 +43,12 @@ public class ClusterNodeMonitor implements Monitor {
         LOGGER.debug("poll() - start");
         final JSONObject jsonObject = jsonFactory.createJSONObject();
         if (clusterNode != null) {
-            jsonObject.put("hostName", clusterNode.getHostName())
+        	String hostname = HOSTNAME_UNKNOWN;
+        	InetAddress inetAddress = clusterNode.getInetAddress();
+        	if (inetAddress != null) {
+        		hostname = inetAddress.getHostName();
+        	}
+            jsonObject.put("hostName", hostname)
                       .put("clusterNodeId", clusterNode.getClusterNodeId())
                       .put("port", clusterNode.getPort())
                       .put("address", clusterNode.getInetAddress().toString());
