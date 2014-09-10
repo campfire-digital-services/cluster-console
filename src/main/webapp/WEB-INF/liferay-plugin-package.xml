@@ -14,6 +14,7 @@
         <license osi-approved="true">GNU Lesser General Public License, Version 3</license>
     </licenses>
     <liferay-versions>
-        <liferay-version>6.1.0+</liferay-version>
+        <liferay-version>6.2.0+</liferay-version>
+        <liferay-version>6.2.10+</liferay-version>        
     </liferay-versions>
 </plugin-package>
